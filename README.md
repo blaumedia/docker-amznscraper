@@ -1,5 +1,7 @@
 DockerHub: https://hub.docker.com/r/blaumedia/amznscraper
 
+Docker Container is reachable at ```Port 80```.
+
 Send request to ```/get.php?url=AMAZON_URL``` or ```/get.php?id=AMAZON_ISIN```.
 
 Responds with JSON:
