@@ -2,9 +2,10 @@
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 
-define('BASE_URL',   'https://www.amazon.TLD/gp/aw/d/');
-define('CACHE_PATH', __DIR__ . '/cache/');
-define('CACHE_TIME', 3600 * 3);
+define('BASE_URL',    'https://www.amazon.TLD/gp/aw/d/');
+define('DEFAULT_TLD', 'de');
+define('CACHE_PATH',  __DIR__ . '/cache/');
+define('CACHE_TIME',  3600 * 3);
 
 $url = NULL;
 
@@ -12,7 +13,7 @@ if (isset($_GET['id'])) {
     $id_pattern = '/[A-Z0-9]+/';
 
     if (preg_match($id_pattern, $_GET['id'])) {
-        $url = BASE_URL . $_GET['id'];
+        $url = str_replace('.TLD', DEFAULT_TLD, BASE_URL) . $_GET['id'];
     }
 } else if (isset($_GET['url'])) {
     $url_pattern       = '/https:\/\/(www\.)?amazon\.([A-Za-z]{2,3})\/[A-Za-z0-9\-]+\/(dp|product)\/([A-Z0-9]+)\/([A-Za-z0-9\?\/=%_&\-]+)?/';
